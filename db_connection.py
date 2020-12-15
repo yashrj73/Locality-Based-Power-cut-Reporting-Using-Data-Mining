@@ -1,3 +1,4 @@
+#establshing connection with firbase database
 import pyrebase
 import matplotlib.pyplot as plt
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -17,7 +18,7 @@ db = firebase.database()
 
 app = Flask(__name__)
 @app.route('/', methods = ['GET', 'POST'])
-def basic():
+def notify_reason():
     users = db.child("powercutfinalyearproject").get()
     users_notification = db.child("notification").get()
     todisplay_powercut_reason = []
@@ -31,7 +32,7 @@ def basic():
         
 
 @app.route('/result', methods = ['GET', 'POST'])
-def basic_fun():
+def notify_user():
     users = db.child("powercutfinalyearproject").get()
     users_notification = db.child("notification").get()
     token_key = set()
@@ -66,7 +67,7 @@ def basic_fun():
         return result_ans
 
 @app.route('/analyze1', methods = ['GET', 'POST'])
-def analysis1():
+def fetch_graph_for_city():
     users = db.child("powercutfinalyearproject").get()
     dict_for_graph = {} 
     for user in users.val():
@@ -83,16 +84,14 @@ def analysis1():
     names = list(dict_for_graph.keys())
     values = list(dict_for_graph.values())
 
-#tick_label does the some work as plt.xticks()
     plt.xlabel("City")
     plt.ylabel("TimeInMinutes")
     plt.bar(range(len(names)),values,tick_label=names)
     
     plt.savefig('static/sity.png')
-#    plt.show()
             
 @app.route('/analyze2', methods = ['GET', 'POST'])
-def analysis2():
+def fetch_graph_for_state():
     users = db.child("powercutfinalyearproject").get()
     dict_for_graph_state = {} 
     for user in users.val():
@@ -112,7 +111,6 @@ def analysis2():
     plt.xlabel("State")
     plt.ylabel("TimeInMinutes")
     plt.savefig('static/state.png')
-#    plt.show()
             
     
 @app.route('/displayallgraph', methods = ['GET','POST'])
