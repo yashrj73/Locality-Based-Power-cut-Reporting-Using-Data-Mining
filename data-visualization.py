@@ -13,7 +13,7 @@ df.drop(columns=to_drop, inplace=True, axis=0)
 df[df.Date_of_Restoration != 'Unknown']
 
 year = df["Year"]
-#print(year)
+
 value = []
 sum =0
 months = []
@@ -33,10 +33,7 @@ for i in range(0, 120):
         duration = delta.days*24 + time.seconds/3600
         months.append(delta1.month)
         sum = sum + duration
-        #time = ((delta.days*24*60) + (min.seconds/60))
-        #print(month)
         value.append(duration)
-        #print("delta.days: {}".format(delta.days))
 length = len(value)
 average = sum/length
 print("average : {}".format(average))
