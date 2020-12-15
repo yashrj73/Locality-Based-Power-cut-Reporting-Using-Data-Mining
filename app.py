@@ -16,7 +16,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-def avoid_redundant_complains():
+def avoid_redundant_complaints():
     users = db.child("powercutfinalyearproject").get()
     users_notification = db.child("notification").get()
     todisplay_powercut_reason = []
