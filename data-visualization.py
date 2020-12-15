@@ -4,21 +4,14 @@ from sklearn import datasets
 import pandas as pd
 from collections import Counter
 
-df = pd.read_csv(r"C:\Users\yshrivastava\Desktop\electricity-UPDATED.csv")
-#print(df.dtypes)
+df = pd.read_csv(r"electricity-UPDATED.csv")
 
 to_drop = ['Demand Loss (MW)', 'Tags', 'Number of Customers Affected']
 
 df.drop(columns=to_drop, inplace=True, axis=0)
 
-#df["Date_of_Restoration"].replace('Unknown', 'Nan')
-
-#print(df.head())
 df[df.Date_of_Restoration != 'Unknown']
-#print(df.head())
-#print(type(df["Date Event Began"]))
 
-#x = df["Time of Restoration"] - df["Time Event Began"]
 year = df["Year"]
 #print(year)
 value = []
@@ -53,6 +46,7 @@ lists = sorted(count.items()) # sorted by key, return a list of tuples
 
 x, y = zip(*lists) # unpack a list of pairs into two tuples
 
+# plotting data retrieved from complaints on application
 plt.plot(x, y)
 plt.title('Month-wise power cut for year 2014')
 plt.xlabel('Month')
