@@ -32,4 +32,4 @@ Data Visualization:
 6.) Save the plots and figures.
 
 
-Research paper: tiny.cc/research_paper
+**Research paper: tiny.cc/research_paper**
