@@ -1,3 +1,4 @@
+#handle complaints
 import pyrebase
 import matplotlib.pyplot as plt
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -15,7 +16,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-def to_avoid_future_complain_whose_response_available():
+def avoid_redundant_complains():
     users = db.child("powercutfinalyearproject").get()
     users_notification = db.child("notification").get()
     todisplay_powercut_reason = []
