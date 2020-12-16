@@ -115,8 +115,8 @@ def fetch_graph_for_state():
     
 @app.route('/displayallgraph', methods = ['GET','POST'])
 def display():
-    analysis1()
-    analysis2()
+    fetch_graph_for_city()
+    fetch_graph_for_state()
     return render_template("display_result.html")
 
 if __name__ == "__main__":
