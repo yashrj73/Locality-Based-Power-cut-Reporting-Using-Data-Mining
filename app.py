@@ -68,5 +68,5 @@ def avoid_redundant_complaints():
 
 if __name__ == "__main__":
     scheduler = BlockingScheduler()
-    scheduler.add_job(to_avoid_future_complain_whose_response_available, 'interval', seconds=10)            
+    scheduler.add_job(avoid_redundant_complaints, 'interval', seconds=10)            
     scheduler.start()
